@@ -62,7 +62,6 @@ export class Homepage {
   }
   watchLoc() {
     const cb = (data) => {
-      console.log('cb called with', data)
       this.coords = data.coords;
       this.requestService.getPotholes().then((potholes) => {
         !this.trackerStarted ? (
@@ -130,7 +129,6 @@ export class Homepage {
       p.d < closest.d ? closest = p : 1;
       const b = this.bearing(this.coords.latitude, this.coords.longitude, p.lat, p.lng);
       const myB = Number(this.coords.heading);
-      // console.log(b, myB);
       this.trigger = `to closest is ${b}, your b is ${myB}`;
       let mes;
       const rounded = p.d.toString().slice(0,3);
@@ -144,7 +142,6 @@ export class Homepage {
           this.used[JSON.stringify(addr)] === true ? 1 : (
             this.used[JSON.stringify(addr)] = true,
             mes = `Approaching ${p.name} ${rounded} miles ahead at ${addr}`,
-            console.log(mes),
             this.platform.is('cordova') ? this.tts.speak(mes) : 1
           );
         });
@@ -169,7 +166,6 @@ export class Homepage {
       for (const key in watching) {
         key === index ? watching[key].st = sorted[key].slice() : (
           watching[key].st = watching[key].st.concat(sorted[key]));
-        // console.log('category', index, 'has this many potholes', watching[index].st.length);
       }
       index === '1' ? (this.warner(watching[index].st)) : 1;
       workOrder === this.workOrder ? (
@@ -193,12 +189,10 @@ export class Homepage {
     let longitude;
     this.requestService.snapToRoad(this.coords.latitude, this.coords.longitude)
     .then((res) => {
-      console.log(res)
       latitude = round(res.snappedPoints[0].location.latitude, 4);
       longitude = round(res.snappedPoints[0].location.longitude, 4);
       const roundedJolts = jolts.map(j => Math.floor(j));
       this.toSave = [latitude, longitude, roundedJolts];
-      console.log(latitude, this.toSave);
       this.requestService.getPotholeByLocation(latitude, longitude)
       .then((data) => {
         if (!data || data.length === 0) {
