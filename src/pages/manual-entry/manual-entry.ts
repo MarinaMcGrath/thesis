@@ -52,7 +52,6 @@ export class ManualEntryPage {
   takePicture() {
     this.camera.getPicture(this.options)
       .then(data => {
-        console.log(data);
         this.image = data
       })
       .catch(e => console.error(e));

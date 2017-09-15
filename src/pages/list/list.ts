@@ -32,7 +32,6 @@ export class ListPage {
           return e
         })
         this.impacts.forEach(impact => {
-          console.log(impact)
           this.requestService.getPotholeById(impact.pothole_id)
             .then(hole => {
               this.nativeGeocoder.reverseGeocode(hole.lat, hole.lng)
@@ -65,8 +64,6 @@ export class ListPage {
         })
       })
   }
-  // You hit {{pothole.name}} at {{pothole.num}} {{pothole.street}} with a force of
-  // {{pothole.force}} Gs on {{pothole.date}}
   postToFb(p: any): any {
     let message = `There's a huge pothole named ${p.name} at ${p.num} ${p.street}! @MayorLandrieu`
     this.socialSharing.share(message, null, null)
