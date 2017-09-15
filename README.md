@@ -36,8 +36,8 @@ You're on your way to City Park with the family. Johnny and Suzy are getting alo
 
 ## Schema
 ![Schema](images/schema.png)
-## Contributing
 
+## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 

@@ -8,42 +8,48 @@
 </ion-header>
 
 <ion-content class="body" padding>
-  <h1>Check out our features, {{ user }}!</h1>
-  Pothole warning system activated. Parsing the database for approaching potholes.
-  <button (click)="showSettings = !showSettings" ion-button icon-start>
-    <ion-icon name="settings"></ion-icon>
-    Show System Settings
-  </button>
-  <div *ngIf="showSettings">
-    <button (click)="forReal = !forReal" ion-button round color="danger">
-      Only Click If Authorized User
+  <div class="description">
+    <h1>Check out our features, {{ user }}!</h1>
+    <br />
+    <p>Pothole warning system activated. Parsing the database for approaching potholes.</p>
+    <br />
+    <button (click)="showSettings = !showSettings" ion-button icon-start>
+      <ion-icon name="settings"></ion-icon>
+      Show System Settings
     </button>
-    <div *ngIf="forReal">
-      <h2>DO THE NOLA SHAKE!</h2>
-      <div>Wait for it! {{trigger}}</div>
-      <div># of movements Is: {{limit}}</div>
-      <input [(ngModel)]="limit" placeholder="new limit">
-      <div>JoltSize is : {{joltSize}}</div>
-      <input [(ngModel)]="joltSize" placeholder="new joltSize">
-      <ion-list inset> Last saved impact
-        <div>G force was {{total}}</div>
-      </ion-list>
-      <ion-list inset> heading is real
-        <div> {{coords.latitude}}</div>
-        <div> {{coords.longitude}}</div>
-        <div> Heading2: {{coords.heading}}</div>
-      </ion-list>
-      <input [(ngModel)]="coords.heading" placeholder="new heading">
-      <div>Use Real Location? : {{realGeo}}</div>
-      <button danger (click)="realLocationToggle()">Toggle Fake Location</button>
-      <button danger (click)="saveImpact([15, 12.5, 45])">Save Another/playsound</button>
-      <button danger (click)="getPotholes()">Get Potholes</button>
-      <ion-list> About to save this impact
-        <ion-item *ngFor="let a of toSave">
-          {{a}}
-        </ion-item>
-      </ion-list>
-      <button danger (click)="makeFake([15, 12.5, 45])">Make Fake</button>
+    <div *ngIf="showSettings">
+      <button (click)="forReal = !forReal" ion-button round color="danger">
+        Only Click If Authorized User
+      </button>
+      <div *ngIf="forReal">
+        <h2>DO THE NOLA SHAKE!</h2>
+        <div>Wait for it! {{trigger}}</div>
+        <div># of movements Is: {{limit}}</div>
+        <input [(ngModel)]="limit" placeholder="new limit">
+        <div>JoltSize is : {{joltSize}}</div>
+        <input [(ngModel)]="joltSize" placeholder="new joltSize">
+        <ion-list inset> Last saved impact
+          <div>G force was {{total}}</div>
+        </ion-list>
+        <ion-list inset> heading is real
+          <div> {{coords.latitude}}</div>
+          <div> {{coords.longitude}}</div>
+          <div> Heading2: {{coords.heading}}</div>
+        </ion-list>
+        <input [(ngModel)]="coords.heading" placeholder="new heading">
+        <div>Use Real Location? : {{realGeo}}</div>
+        <button danger (click)="realLocationToggle()">Toggle Fake Location</button>
+        <button danger (click)="saveImpact([15, 12.5, 45])">Save Another/playsound</button>
+        <button danger (click)="getPotholes()">Get Potholes</button>
+        <ion-list> About to save this impact
+          <ion-item *ngFor="let a of toSave">
+            {{a}}
+          </ion-item>
+        </ion-list>
+        <button danger (click)="makeFake([15, 12.5, 45])">Make Fake</button>
+      </div>
     </div>
   </div>
+
+
 </ion-content>
