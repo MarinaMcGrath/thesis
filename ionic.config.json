@@ -1,6 +1,6 @@
 {
   "name": "dataCollect",
-  "app_id": "58eab68b",
+  "app_id": "5a42cc29",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

@@ -19,8 +19,7 @@ export class Impact {
 @Injectable()
 export class RequestService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  // private url = 'http://54.227.175.5/'
-  private url = 'http://cratergator.club/';
+  private url = 'https://cratergator.club/';
   constructor(private http: Http, private nativeStorage: NativeStorage) { }
 
   snapToRoad(lat, lng) {

@@ -49,6 +49,7 @@ export class MapPage {
       }
     this.map = this.googleMaps.create(this.mapElement, mapOptions);
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      var x = this.map.get(this.mapElement[0]);
       this.requestService.getPotholes().then(values => {
         values.forEach(ph => {
           // let name = this.bearing(29.945854, -90.070120, ph.lat, ph.lng).toString() + ' ' + this.warner(ph)
