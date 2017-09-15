@@ -19,7 +19,7 @@ import { Events } from 'ionic-angular';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = LoginPage;
+  rootPage = Homepage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
